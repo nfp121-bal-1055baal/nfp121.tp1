@@ -20,12 +20,14 @@ public class Picture {
     private Square window;
     private Triangle roof;
     private Circle sun;
+    private String colorOfSun;
 
     /**
      * Constructor for objects of class Picture
      */
-    public Picture() {
-        // nothing to do... instance variables are automatically set to null
+    
+    public Picture(String s){
+        colorOfSun=s;
     }
 
     /**
@@ -50,11 +52,20 @@ public class Picture {
         roof.makeVisible();
 
         sun = new Circle();
-        sun.changeColor("yellow");
+        if(colorOfSun!=null&&!colorOfSun.equals(""))
+            sun.changeColor(colorOfSun);
+        else
+            sun.changeColor("blue");
         sun.moveHorizontal(180);
         sun.moveVertical(-10);
         sun.changeSize(60);
         sun.makeVisible();
+        
+        //methode de couchement du soleil
+        if(colorOfSun!=null&&!colorOfSun.equals("")&&colorOfSun.equals("blue")){
+            sun.slowMoveVertical(220);
+        }
+       
     }
 
     /**
