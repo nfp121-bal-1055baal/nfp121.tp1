@@ -58,6 +58,9 @@ public class AuditeurCNAM {
         login = Normalizer.normalize(login, Normalizer.Form.NFD);
         login = login.replaceAll("\\p{M}", "");
         
+        //elimination des caractère speciaux
+        login = login.replaceAll("[^a-z_]","_");
+        
         return login;// à compléter
     }
 

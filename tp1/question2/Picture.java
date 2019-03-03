@@ -26,6 +26,10 @@ public class Picture {
      * Constructor for objects of class Picture
      */
     
+    public Picture(){
+        
+    }
+    
     public Picture(String s){
         colorOfSun=s;
     }
@@ -55,19 +59,23 @@ public class Picture {
         if(colorOfSun!=null&&!colorOfSun.equals(""))
             sun.changeColor(colorOfSun);
         else
-            sun.changeColor("blue");
+            sun.changeColor("yellow");
         sun.moveHorizontal(180);
         sun.moveVertical(-10);
         sun.changeSize(60);
         sun.makeVisible();
         
-        //methode de couchement du soleil
-        if(colorOfSun!=null&&!colorOfSun.equals("")&&colorOfSun.equals("blue")){
-            sun.slowMoveVertical(220);
-        }
+        
        
     }
 
+    //methode de couchement
+    
+    public void coucher(){
+        sun.changeColor("blue");
+        sun.slowMoveVertical(220);
+    
+    }
     /**
      * Change this picture to black/white display
      */

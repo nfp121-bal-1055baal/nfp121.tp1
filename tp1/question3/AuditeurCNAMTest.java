@@ -130,5 +130,12 @@ public class AuditeurCNAMTest extends junit.framework.TestCase {
         question3.AuditeurCNAM auditeur1 = new question3.AuditeurCNAM("Bùk er", "John", "23456");
         assertEquals("buk_er_j", auditeur1.login());
     }
+
+    public void testTest_caractere_speciaux()
+    {
+        question3.AuditeurCNAM auditeur3 = new question3.AuditeurCNAM("@_nt$nio", "semaan", "1234");
+        assertEquals("__nt_n_s", auditeur3.login());
+    }
 }
+
 
