@@ -3,6 +3,9 @@ package question2;
 import question1.Circle;
 import question1.Square;
 import question1.Triangle;
+import javax.swing.Timer;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 /**
  * This class represents a simple picture. You can draw the picture using the
@@ -20,7 +23,7 @@ public class Picture {
     private Square window;
     private Triangle roof;
     private Circle sun,soleilJaune;
-
+    static int distanceMoved;
     /**
      * Constructor for objects of class Picture
      */
@@ -72,8 +75,22 @@ public class Picture {
     //methode de couchement
     
     public void coucher(){
-        sun.changeColor("blue");
-        sun.slowMoveVertical(220);
+        distanceMoved=200;
+        Timer timer = new Timer(50, new ActionListener() {
+                        
+        public void actionPerformed(ActionEvent e) {
+                if (distanceMoved == 0) {
+                    ((Timer)e.getSource()).stop();
+                }
+            
+                sun.moveVertical(1);
+                distanceMoved--;
+            }
+        });
+        timer.setRepeats(true);
+        timer.setCoalesce(true);
+        timer.setInitialDelay(0);
+        timer.start();
     
     }
     /**
