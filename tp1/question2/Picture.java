@@ -19,8 +19,7 @@ public class Picture {
     private Square wall;
     private Square window;
     private Triangle roof;
-    private Circle sun;
-    private String colorOfSun;
+    private Circle sun,soleilJaune;
 
     /**
      * Constructor for objects of class Picture
@@ -30,9 +29,6 @@ public class Picture {
         
     }
     
-    public Picture(String s){
-        colorOfSun=s;
-    }
 
     /**
      * Draw this picture.
@@ -56,14 +52,18 @@ public class Picture {
         roof.makeVisible();
 
         sun = new Circle();
-        if(colorOfSun!=null&&!colorOfSun.equals(""))
-            sun.changeColor(colorOfSun);
-        else
-            sun.changeColor("yellow");
+        sun.changeColor("blue");
         sun.moveHorizontal(180);
         sun.moveVertical(-10);
         sun.changeSize(60);
         sun.makeVisible();
+        
+        soleilJaune = new Circle();
+        soleilJaune.changeColor("yellow");
+        soleilJaune.moveHorizontal(180);
+        soleilJaune.moveVertical(10);
+        soleilJaune.changeSize(70);
+        soleilJaune.makeVisible();
         
         
        

@@ -2,7 +2,9 @@ package question1;
 
 import java.awt.*;
 import java.awt.geom.*;
-
+import javax.swing.Timer;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 /**
  * A circle that can be manipulated and that draws itself on a canvas.
  * 
@@ -16,7 +18,7 @@ public class Circle {
     private int yPosition;
     private String color;
     private boolean isVisible;
-
+    static int distanceMoved;
     /**
      * Create a new circle at default position with default color.
      */
@@ -113,8 +115,8 @@ public class Circle {
      * Slowly move the circle vertically by 'distance' pixels.
      */
     public void slowMoveVertical(int distance) {
-        int delta;
-
+        /*int delta;
+        
         if (distance < 0) {
             delta = -1;
             distance = -distance;
@@ -126,7 +128,24 @@ public class Circle {
             yPosition += delta;
             draw();
             Canvas canvas = Canvas.getCanvas();
-        }
+        }*/
+        distanceMoved=distance;
+        Timer timer = new Timer(50, new ActionListener() {
+                        
+        public void actionPerformed(ActionEvent e) {
+                if (distanceMoved == 0) {
+                    ((Timer)e.getSource()).stop();
+                }
+            
+                yPosition++;
+                distanceMoved--;
+                draw();
+            }
+        });
+        timer.setRepeats(true);
+        timer.setCoalesce(true);
+        timer.setInitialDelay(0);
+        timer.start();
     }
 
     /**
