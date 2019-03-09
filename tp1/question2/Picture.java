@@ -24,6 +24,7 @@ public class Picture {
     private Triangle roof;
     private Circle sun,soleilJaune;
     static int distanceMoved;
+    private boolean terreEstFixe=false;
     /**
      * Constructor for objects of class Picture
      */
@@ -68,30 +69,31 @@ public class Picture {
         soleilJaune.changeSize(70);
         soleilJaune.makeVisible();
         
-        
+        terreEstFixe=true;
        
     }
 
     //methode de couchement
     
     public void coucher(){
-        distanceMoved=200;
-        Timer timer = new Timer(50, new ActionListener() {
+        if(terreEstFixe){
+            distanceMoved=200;
+            Timer timer = new Timer(50, new ActionListener() {
                         
-        public void actionPerformed(ActionEvent e) {
-                if (distanceMoved == 0) {
-                    ((Timer)e.getSource()).stop();
-                }
+            public void actionPerformed(ActionEvent e) {
+                    if (distanceMoved == 0) {
+                        ((Timer)e.getSource()).stop();
+                    }
             
-                sun.moveVertical(1);
-                distanceMoved--;
-            }
-        });
-        timer.setRepeats(true);
-        timer.setCoalesce(true);
-        timer.setInitialDelay(0);
-        timer.start();
-    
+                    sun.moveVertical(1);
+                    distanceMoved--;
+                }
+            });
+            timer.setRepeats(true);
+            timer.setCoalesce(true);
+            timer.setInitialDelay(0);
+            timer.start();
+        }
     }
     /**
      * Change this picture to black/white display
